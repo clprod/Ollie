@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://textures/weapons/bow.png" type="Texture" id=1]
+[ext_resource path="res://scripts/weapons/bow.gd" type="Script" id=2]
+
+
+
+[node name="bow" type="Sprite"]
+
+texture = ExtResource( 1 )
+hframes = 5
+script/script = ExtResource( 2 )
+arrow_scene = null
+max_loading_time = 2
+min_power = 5
+max_power = 20
+
+

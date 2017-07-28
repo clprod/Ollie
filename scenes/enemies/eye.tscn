@@ -1,0 +1,65 @@
+[gd_scene load_steps=19 format=1]
+
+[ext_resource path="res://scripts/enemies/eye.gd" type="Script" id=1]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing1.png" type="Texture" id=2]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing2.png" type="Texture" id=3]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing3.png" type="Texture" id=4]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing4.png" type="Texture" id=5]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing5.png" type="Texture" id=6]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing6.png" type="Texture" id=7]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing7.png" type="Texture" id=8]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing8.png" type="Texture" id=9]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing9.png" type="Texture" id=10]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing10.png" type="Texture" id=11]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing11.png" type="Texture" id=12]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing12.png" type="Texture" id=13]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing13.png" type="Texture" id=14]
+[ext_resource path="res://textures/enemies/eye/eyeball2processing14.png" type="Texture" id=15]
+[ext_resource path="res://scenes/healthbar.tscn" type="PackedScene" id=16]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 18.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="eye" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 4
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+max_health = 3
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+transform/scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="healthbar" parent="." instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 0, -25 )
+max_width = 50
+
+
